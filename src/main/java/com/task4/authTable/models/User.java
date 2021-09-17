@@ -1,8 +1,6 @@
 package com.task4.authTable.models;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.function.Supplier;
 
 @Entity
 @Table(name="users")
@@ -12,15 +10,15 @@ public class User {
     private Long id;
 
     private String username, email, clientName;
-    private LocalDateTime firstVisit;
-    private LocalDateTime lastVisit;
+    private String firstVisit;
+    private String lastVisit;
     private Status status;
 
-    public LocalDateTime getFirstVisit() {
+    public String getFirstVisit() {
         return firstVisit;
     }
 
-    public void setFirstVisit(LocalDateTime firstVisit) {
+    public void setFirstVisit(String firstVisit) {
         this.firstVisit = firstVisit;
     }
 
@@ -57,11 +55,11 @@ public class User {
     }
 
 
-    public LocalDateTime getLastVisit() {
+    public String getLastVisit() {
         return lastVisit;
     }
 
-    public void setLastVisit(LocalDateTime lastVisit) {
+    public void setLastVisit(String lastVisit) {
         this.lastVisit = lastVisit;
     }
 
