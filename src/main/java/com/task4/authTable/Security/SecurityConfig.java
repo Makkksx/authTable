@@ -32,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/table").hasAuthority(Status.ACTIVE.getAuthority())
-//                    .antMatchers("/table").access("#oauth2.hasAuthority('ROLE_USER')")
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()
@@ -40,11 +39,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .userService(oAuth2UserService)
                 .and()
                 .successHandler(oAuth2LoginSuccessHandler);
-//                .and()
-//                    .logout().permitAll()
-//                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
-//                    .invalidateHttpSession(true)
-//                    .clearAuthentication(true)
-//                    .deleteCookies("JSESSIONID");
     }
 }

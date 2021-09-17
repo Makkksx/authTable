@@ -23,7 +23,6 @@ public class TableController {
 
     @GetMapping("/table")
        public String tableMain(Model model) {
-//        Iterable<User> users = userRepository.findAll();
         model.addAttribute("users", userRepository);
         model.addAttribute("title", "Table here");
         return "table";
