@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<!--<sec:authorize access="hasRole(BANNED)">-->
+<!--    <div sec:authorize="isAuthenticated()" class="alert alert-dark" role="alert">-->
+<!--        You banned!-->
+<!--    </div>-->
+<!--</sec:authorize>-->
+<chart th:insert="blocks/pieChart :: pieChart"></chart>
+</body>
+</html>
