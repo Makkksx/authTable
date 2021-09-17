@@ -10,5 +10,4 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
     User findFirstByEmailAndClientName(String email, String clientName );
     List <User> findUsersByClientName(String clientName);
-
 }

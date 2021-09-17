@@ -70,4 +70,5 @@ public class User {
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }
+
 }

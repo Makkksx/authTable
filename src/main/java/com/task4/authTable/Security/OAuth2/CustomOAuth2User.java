@@ -1,6 +1,8 @@
 package com.task4.authTable.Security.OAuth2;
 
 import com.task4.authTable.models.Status;
+import com.task4.authTable.repo.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
