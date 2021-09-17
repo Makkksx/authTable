@@ -29,7 +29,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user: ${users.findAll()}">
+                <tr th:each="user: ${users}">
                     <td th:id="${user.getId()}"></td>
                     <td th:text="${user.getId()}"></td>
                     <td th:text="${user.getUsername()}"></td>
@@ -56,27 +56,27 @@
         })
     </script>
     <script>
-        var table = $('#table')
+        let table = $('#table');
         function getIds() {
             return $.map(table.bootstrapTable('getSelections'), function(row){
                 return row.id
             });
         }
         $('#block').on('click', function(){
-            var ids = getIds()
-            document.location.href = '/table/block/' + ids;
+            let ids = getIds();
+            document.location.href = '/table/setBlock/' + "BANNED" + "/" + ids;
         })
         $('#unblock').on('click', function(){
-            var ids = getIds()
-            document.location.href = '/table/unblock/' + ids;
+            let ids = getIds();
+            document.location.href = '/table/setBlock/' + "ACTIVE" + "/" + ids;
         })
         $('#remove').on('click', function(){
-            var ids = getIds()
+            let ids = getIds();
             table.bootstrapTable('remove', {
                 field: 'id',
                 values: ids
             })
-            document.location.href = '/table/delete/' + ids;
+            document.location.href = '/table/setBlock/' + ids;
         })
     </script>
 </div>
