@@ -1,8 +1,6 @@
-package com.task4.authTable.Security.OAuth2;
+package com.task4.authTable.security.OAuth2;
 
 import com.task4.authTable.models.Status;
-import com.task4.authTable.repo.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
@@ -39,6 +37,7 @@ public class CustomOAuth2User implements OAuth2User {
     public String getName() {
         return oAuth2User.getAttribute("name");
     }
+
     public String getEmail() {
         return oAuth2User.getAttribute("email");
     }

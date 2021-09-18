@@ -1,4 +1,4 @@
-package com.task4.authTable.Security.OAuth2;
+package com.task4.authTable.security.OAuth2;
 
 import com.task4.authTable.models.Status;
 import com.task4.authTable.models.User;
@@ -22,13 +22,14 @@ import java.util.Collections;
 public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
         CustomOAuth2User oAuth2User = (CustomOAuth2User) authentication.getPrincipal();
         User user = userRepository.findFirstByEmailAndClientName(oAuth2User.getEmail(),
                 oAuth2User.getClientName());
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
-        if ( user == null) {
+        if (user == null) {
             user = new User();
             user.setUsername(oAuth2User.getName());
             user.setClientName(oAuth2User.getClientName());
@@ -42,7 +43,7 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
                         SecurityContextHolder.getContext().getAuthentication().getPrincipal(),
                         SecurityContextHolder.getContext().getAuthentication().getCredentials(),
                         Collections.singleton(user.getStatus())
-        ));
+                ));
         userRepository.save(user);
         super.onAuthenticationSuccess(request, response, authentication);
     }

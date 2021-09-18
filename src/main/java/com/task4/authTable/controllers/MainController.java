@@ -21,12 +21,13 @@ public class MainController {
         model.addAttribute("gitHubUsers", userRepository.findUsersByClientName("GitHub").size());
         return "home";
     }
+
     @GetMapping("/login")
     public String getLoginPage(Model model,
                                @RequestParam(value = "error", required = false) String error,
-                               @RequestParam(value = "logout", required = false) String logout){
-        model.addAttribute("error", error !=null);
-        model.addAttribute("logout", logout !=null);
+                               @RequestParam(value = "logout", required = false) String logout) {
+        model.addAttribute("error", error != null);
+        model.addAttribute("logout", logout != null);
         return "login";
     }
 }

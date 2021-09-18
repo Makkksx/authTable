@@ -1,9 +1,9 @@
 package com.task4.authTable.controllers;
 
-import com.task4.authTable.Security.OAuth2.CustomOAuth2User;
 import com.task4.authTable.models.Status;
 import com.task4.authTable.models.User;
 import com.task4.authTable.repo.UserRepository;
+import com.task4.authTable.security.OAuth2.CustomOAuth2User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,21 +22,23 @@ import java.util.stream.Collectors;
 public class TableController {
     @Autowired
     private UserRepository userRepository;
+
     @GetMapping("/table")
-       public String tableMain(Model model, Authentication auth) {
-        if (auth.getAuthorities().contains(Status.BANNED)){
+    public String tableMain(Model model, Authentication auth) {
+        if (auth.getAuthorities().contains(Status.BANNED)) {
             return "redirect:/";
         }
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("title", "Table here");
         return "table";
     }
+
     @GetMapping("/table/setBlock/{status}/{ids}")
     public String setBlock(@PathVariable("status") String status, @PathVariable("ids") String ids, Authentication auth) {
         CustomOAuth2User oAuth2User = (CustomOAuth2User) auth.getPrincipal();
         List<Long> list = Arrays.stream(ids.split(",")).map(s -> Long.parseLong(s.trim())).collect(Collectors.toList());
         Iterable<User> allById = userRepository.findAllById(list);
-        for (User el:allById){
+        for (User el : allById) {
             el.setStatus(Status.valueOf(status));
         }
         SecurityContextHolder.getContext().setAuthentication(
@@ -49,6 +51,7 @@ public class TableController {
         userRepository.saveAll(allById);
         return "redirect:/table";
     }
+
     @GetMapping("/table/delete/{ids}")
     public String delete(@PathVariable("ids") String ids, Model model) {
         List<Long> list = Arrays.stream(ids.split(",")).map(s -> Long.parseLong(s.trim())).collect(Collectors.toList());
