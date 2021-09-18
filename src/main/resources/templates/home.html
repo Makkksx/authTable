@@ -8,11 +8,11 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<sec:authorize access="hasAuthority('BANNED')">
-    <div sec:authorize="isAuthenticated()" class="alert alert-dark text-center" role="alert">
+<div sec:authorize="hasAuthority('BANNED')">
+    <div class="alert alert-dark text-center" role="alert">
         You banned!
     </div>
-</sec:authorize>
+</div>
 <chart th:insert="blocks/pieChart :: pieChart"></chart>
 </body>
 </html>

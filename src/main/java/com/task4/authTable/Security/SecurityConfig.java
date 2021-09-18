@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/table")
                     .userInfoEndpoint()
                     .userService(oAuth2UserService)
-                .and()
-                .successHandler(oAuth2LoginSuccessHandler)
+                    .and()
+                    .successHandler(oAuth2LoginSuccessHandler)
                 .and()
                 .logout().permitAll();
     }
