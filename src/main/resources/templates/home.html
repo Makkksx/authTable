@@ -9,7 +9,7 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <sec:authorize access="hasAuthority('BANNED')">
-    <div sec:authorize="isAuthenticated()" class="alert alert-dark" role="alert">
+    <div sec:authorize="isAuthenticated()" class="alert alert-dark text-center" role="alert">
         You banned!
     </div>
 </sec:authorize>

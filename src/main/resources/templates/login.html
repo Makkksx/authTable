@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="blocks/header :: header">
+</header>
 <div class="container">
     <form class="form-signin text-center" method="post" th:action="@{/login}">
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -27,8 +28,9 @@
         <div class="container mt-2 mb-2">
             <a class="btn btn-lg btn-secondary fab fa-github col-3" th:href="@{oauth2/authorization/gitHub}">Continue with GitHub</a>
         </div>
-        <input name="${_csrf.parameterName}" type="hidden" value="{_csrf.token}">
+<!--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
     </form>
 </div>
 <script src="https://kit.fontawesome.com/d361015408.js" crossorigin="anonymous"></script>
-</body></html>
+</body>
+</html>

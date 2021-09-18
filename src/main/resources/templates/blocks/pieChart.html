@@ -7,7 +7,6 @@
         <div class="container" id="container"></div>
     </figure>
     <script th:inline="javascript">
-        // Radialize the colors
         Highcharts.setOptions({
             colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
                 return {
@@ -24,7 +23,6 @@
             })
         });
 
-        // Build the chart
         Highcharts.chart('container', {
             chart: {
                 plotBackgroundColor: null,
